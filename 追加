@@ -1,0 +1,74 @@
+--N個テーブルの対応
+
+下記は王との会話内容、N個テーブルの場合、1つのソールファイルにloopで実行する、複数ファイルを作成せずに済む。
+
+
+
+'■移行処理の呼び出し
+    Call MainConv(WScript.Arguments)
+
+    '■エラーハンドリング後、VBSを終了する
+    If 0 <> err.Number Then
+        Call WScript.Echo( "VBS-" & CStr(err.Number) & " [" & err.Source & ":" & err.Description & "]" )
+        Call WScript.Quit(1)
+    Else
+        Call WScript.Echo( "    ■■■■ 表１移行完了しました。 ■■■■" )
+    End If
+
+    '■移行処理の呼び出し
+    Call MainConv1(WScript.Arguments)
+
+    '■エラーハンドリング後、VBSを終了する
+    If 0 <> err.Number Then
+        Call WScript.Echo( "VBS-" & CStr(err.Number) & " [" & err.Source & ":" & err.Description & "]" )
+        Call WScript.Quit(1)
+    Else
+        Call WScript.Echo( "    ■■■■ 正常終了しました。 ■■■■" )
+        Call WS
+'■移行処理の呼び出し
+    Call MainConv(WScript.Arguments)
+
+    '■エラーハンドリング後、VBSを終了する
+    If 0 <> err.Number Then
+        Call WScript.Echo( "VBS-" & CStr(err.Number) & " [" & err.Source & ":" & err.Description & "]" )
+        Call WScript.Quit(1)
+    Else
+        Call WScript.Echo( "    ■■■■ 表１移行完了しました。 ■■■■" )
+    End If
+
+    '■移行処理の呼び出し
+    Call MainConv1(WScript.Arguments)
+
+    '■エラーハンドリング後、VBSを終了する
+    If 0 <> err.Number Then
+        Call WScript.Echo( "VBS-" & CStr(err.Number) & " [" & err.Source & ":" & err.Description & "]" )
+        Call WScript.Quit(1)
+    Else
+        Call WScript.Echo( "    ■■■■ 正常終了しました。 ■■■■" )
+        Call WScript.Quit(0)
+    End If
+
+
+这里需要特别注意的是
+只有最后一个方法才这么写
+'■移行処理の呼び出し
+    Call MainConv1(WScript.Arguments)
+
+    '■エラーハンドリング後、VBSを終了する
+    If 0 <> err.Number Then
+        Call WScript.Echo( "VBS-" & CStr(err.Number) & " [" & err.Source & ":" & err.Description & "]" )
+        Call WScript.Quit(1)
+    Else
+        Call WScript.Echo( "    ■■■■ 正常終了しました。 ■■■■" )
+        Call WScript.Quit(0)
+    End If
+不是最后一个的时候
+Call MainConv(WScript.Arguments)
+
+    '■エラーハンドリング後、VBSを終了する
+    If 0 <> err.Number Then
+        Call WScript.Echo( "VBS-" & CStr(err.Number) & " [" & err.Source & ":" & err.Description & "]" )
+        Call WScript.Quit(1)
+    Else
+        Call WScript.Echo( "    ■■■■ 表１移行完了しました。 ■■■■" )
+    End If
