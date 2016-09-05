@@ -1,0 +1,37 @@
+
+
+//方法1
+
+public class SimpleClass
+{
+    public void GetData()
+    {
+        SqlConnection con = new SqlConnection();
+        SqlDataAdapter adapter = new SqlDataAdapter();
+        DataTable dt = new DataTable();
+        string sql = "select a.field1, b.field2 from a, b 
+where a.item_id = b.item_id(+)";
+        con.ConnectionString = ConfigurationManager.
+ConnectionStrings["ConnectionString"].ToString();
+        adapter.SelectCommand = new SqlCommand(sql, con);
+        adapter.Fill(dt);
+    }
+}
+
+
+//方法２
+public class SimpleClass
+{
+    public void GetData()
+    {
+        SqlConnection con = new SqlConnection();
+        SqlDataAdapter adapter = new SqlDataAdapter();
+        DataTable dt = new DataTable();
+        string sql = "select a.field1, b.field2 
+from a LEFT OUTER JOIN b ON a.item_id = b.item_id";
+        con.ConnectionString = ConfigurationManager.
+ConnectionStrings["ConnectionString"].ToString();
+        adapter.SelectCommand = new SqlCommand(sql, con);
+        adapter.Fill(dt);
+    }
+}
